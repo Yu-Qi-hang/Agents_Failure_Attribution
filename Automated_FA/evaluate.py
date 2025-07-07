@@ -21,7 +21,7 @@ def read_predictions(eval_file):
     parsed_count = 0
 
     for block in blocks:
-        content = block.group(2).strip()
+        content = block.group(2).replace('*','').strip()
         idx = block.group(1).strip()
         agent_name_match = re.search(r"Agent Name:\s*([\w_]+)", content, re.IGNORECASE)
         step_number_match = re.search(r"Step Number:\s*(\d+)", content, re.IGNORECASE)
