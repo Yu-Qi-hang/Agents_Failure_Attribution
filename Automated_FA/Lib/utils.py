@@ -69,10 +69,7 @@ def all_at_once(client, directory_path: str, is_handcrafted: bool, model: str, m
 
         chat_history = data.get("history", [])
         problem = data.get("question", "")
-        if "ground_truth" in data:
-            ground_truth = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
-        else:
-            ground_truth = data.get("groundtruth", "") # Keep ground truth if needed for evaluation
+        ground_truth = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
 
         if not chat_history:
             print(f"Skipping {json_file}: No chat history found.")
@@ -136,10 +133,7 @@ def step_by_step(client, directory_path: str, is_handcrafted: bool, model: str, 
 
         chat_history = data.get("history", [])
         problem = data.get("question", "")
-        if "ground_truth" in data:
-            ground_truth = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
-        else:
-            ground_truth = data.get("groundtruth", "") # Keep ground truth if needed for evaluation
+        ground_truth = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
 
         if not chat_history:
             print(f"Skipping {json_file}: No chat history found.")
@@ -302,10 +296,7 @@ def binary_search(client, directory_path: str, is_handcrafted: bool, model: str,
         chat_history = data.get("history", [])
         problem = data.get("question", "")
 
-        if "ground_truth" in data:
-            answer = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
-        else:
-            answer = data.get("groundtruth", "") # Keep ground truth if needed for evaluation
+        answer = data.get("ground_truth", "") # Keep ground truth if needed for evaluation
 
         if not chat_history:
             print(f"Skipping {json_file}: No chat history found.")
@@ -338,10 +329,7 @@ def sliding_window_json(client, model, max_tokens, extra_body, data, index_agent
     stride=2
     chat_history = data["history"]
     problem = data.get("question", "")
-    if "ground_truth" in data:
-        ground_truth = data.get("ground_truth", "")
-    else:
-        ground_truth = data.get("groundtruth", "")
+    ground_truth = data.get("ground_truth", "")
 
     error_found = False
     total_steps = len(chat_history)
@@ -561,10 +549,7 @@ def error_propagation(client, directory_path: str, is_handcrafted: bool, model: 
             
         chat_history = data["history"]
         problem = data.get("question", "")
-        if "ground_truth" in data:
-            ground_truth = data.get("ground_truth", "")
-        else:
-            ground_truth = data.get("groundtruth", "")
+        ground_truth = data.get("ground_truth", "")
         
         # Step 1: Build dependency graph with semantic relationships
         print(f"--- Analyzing File: {json_file} ---")
@@ -666,10 +651,7 @@ def hybrid_analysis(client, directory_path: str, is_handcrafted: bool, model: st
             
         chat_history = data["history"]
         problem = data.get("question", "")
-        if "ground_truth" in data:
-            ground_truth = data.get("ground_truth", "")
-        else:
-            ground_truth = data.get("groundtruth", "")
+        ground_truth = data.get("ground_truth", "")
         
         print(f"--- Analyzing File: {json_file} ---")
         # 第一阶段：轻量级Agent识别
